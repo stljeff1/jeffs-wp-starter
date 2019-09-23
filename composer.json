@@ -1,0 +1,7 @@
+{
+	"name": "stljeff1/jw-2020",
+	"license": "MIT",
+	"require": {
+		"timber/timber": "^1.9.4"
+	}
+}
