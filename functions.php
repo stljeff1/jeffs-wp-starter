@@ -14,11 +14,40 @@ if ( ! class_exists( 'Timber' ) ) {
 	});
 
 	add_filter('template_include', function( $template ) {
-		return get_stylesheet_directory() . '/frontend/views/no-timber.php';
+		return get_stylesheet_directory() . '/views/no-timber.php';
 	});
 
 	return;
 }
+
+define('WP_ENV', 'staging');
+define('THEME', get_stylesheet_directory());
+define('THEME_URI', get_stylesheet_directory_uri());
+
+// I do not need this line, since I am not using composer
+// $timber = new \Timber\Timber();
+
+
+/**
+ * Sets the directories (inside your theme) to find .twig files
+ */
+Timber::$dirname = array( 'views' );
+
+
+$file_includes = array(
+    'JW_Site.php',
+    'helpers.php'
+);
+
+foreach($file_includes as $file) {
+    $filepath = locate_template('app/' . $file);
+
+    if ( ! $filepath ) {
+        trigger_error( sprintf( 'Error locating /inc%s for inclusion', $file ), E_USER_ERROR );
+    }
+    require_once $filepath;
+}
+
 
 
 
