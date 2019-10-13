@@ -6,7 +6,8 @@
 
 @import "./common/mixins";
 
-@import "include-foundation";
+@import "import-fontawesome";
+@import "import-foundation";
 
 body {
 	background-color: $body-background;
