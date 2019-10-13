@@ -4,6 +4,7 @@ const gulp = require('gulp');
 const gulpsass = require('gulp-sass');
 const cssnano = require('cssnano');
 const autoprefixer = require('gulp-autoprefixer');
+const sassglob = require('gulp-sass-glob');
 const postcss = require('gulp-postcss');
 const sourcemaps = require('gulp-sourcemaps');
 
