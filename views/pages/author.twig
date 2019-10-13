@@ -1,0 +1,16 @@
+{% extends "layouts/base.twig" %}
+
+
+{% block content %}
+	{{ dump() }}
+			<article class="auithor-container" id="post-{{post.ID}}">
+				<section class="article-content">
+					<h1 class="article-h1">{{post.title}}</h1>
+
+					<div class="article-body">
+						{{post.content}}
+					</div>
+				</section>
+			</article>
+		
+{% endblock %}

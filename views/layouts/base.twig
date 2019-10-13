@@ -1,0 +1,67 @@
+{% block html_head_container %}
+<!doctype html>
+<!--[if lt IE 9]><html class="ie lt-ie9 lt-ie8 lt-ie7" {{ site.language_attributes }}> <![endif]-->
+<!--[if IE 9]><html class="ie ie9 lt-ie9 lt-ie8" {{ site.language_attributes }}> <![endif]-->
+<!--[if gt IE 9]><!--><html {{ site.language_attributes }}> <!--<![endif]-->
+    {% set page_title %}{% if wp_title %}{{ wp_title }} - {{ site.name }}{% else %}{{ site.name }}{% endif %}{% endset %}
+    <head>
+        {% block head %}
+            {% include 'blocks/html-header.twig' %}
+        {% endblock %}
+    </head> 
+{% endblock %}
+
+<body class="{{ body_class }}" data-template="base.twig">
+    
+    {% do action('body_top') %}
+    
+    {% block siteHead %}
+
+        {% include 'blocks/site-header.twig' %}
+
+    {% endblock %}
+    
+    {% block nav %}
+        {# {% include 'blocks/nav.twig' %} #}
+    {% endblock nav %}
+
+    {% block baseContent %}
+        <div  class="{{ container_class }}">
+            
+            <div class="grid-x {% if sidebar %} has-sidebar {% endif %}">
+                
+                <div class="cell auto main-content-cell">
+                    {% block content %}
+                        <section id="content" role="main" class="content-wrapper {{ wrapper_class }}">
+                            {% if title %}
+                                <h1>{{ title }}</h1>
+                            {% endif %}
+                            Sorry, no content
+                        </section>
+                    {% endblock %}
+                </div>
+                
+                {% if sidebar %}
+                    <div class="cell large-4 sidebar-cell">
+                        <aside class="layout-sidebar">
+                            {{ sidebar }}
+                        </aside>
+                    </div>
+                {% endif %}
+            </div>
+
+        </div>
+    {% endblock %}
+
+
+    {% block siteFooter %}
+        {% include 'blocks/footer.twig' %}
+        {{ function('wp_footer') }}
+    {% endblock %}
+    
+    {% block javascripts %}
+    {% endblock %}
+
+
+</body>
+</html>
