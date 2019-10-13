@@ -1,0 +1,25 @@
+
+        <meta charset="{{ site.charset }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="{{ site.description }}">
+
+        {% if options.google_site_verification %}
+<meta name="google-site-verification" content="{{ options.google_site_verification }}">
+        {% endif %}
+
+        <link rel="pingback" href="{{ site.pingback_url }}">
+        <link rel="canonical" href="{{ site.link }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ site.theme.link }}/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ site.theme.link }}/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ site.theme.link }}/favicon-16x16.png">
+        <link rel="manifest" href="{{ site.theme.link }}/site.webmanifest">
+
+        <title>{{ page_title }}</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto+Slab:100,700" rel="stylesheet">
+
+        {#
+        <link rel="stylesheet" href="{{ site.theme.link }}/style.css" type="text/css" media="screen" />
+        #}
+        
+        {{ function('wp_head') }}
