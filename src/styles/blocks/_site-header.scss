@@ -1,6 +1,7 @@
 .site-header {
-	background-color: #fff;
-	border-bottom: 2px solid $primary-color;
+	@extend .v-pad;
+	background-color: $gray-8;
+	border-bottom: 2px solid $gray-3;
 }
 
 .site-title {

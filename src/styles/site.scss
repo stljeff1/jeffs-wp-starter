@@ -9,6 +9,8 @@
 // @import "import-fontawesome";
 @import "import-foundation";
 
+/*******************************************************************************/
+
 body {
 	background-color: $body-background;
 }
@@ -20,17 +22,32 @@ body {
 	}
 }
 
+
+/*******************************************************************************/
+
+
 .m-b {
 	@include xy-gutters($gutter-position: bottom);	
+}
+
+.v-pad {
+	@include xy-gutters($gutter-position: top bottom, $gutter-type: padding);	
+}
+
+.site-body {
+	@extend .v-pad;
 }
 
 
 
 
+/*******************************************************************************/
+
+
 .post-listing-item {
 	@include xy-gutters($gutter-position: top bottom, $gutters: $hefty-gutters);
 	@include xy-gutters($gutter-position: bottom, $gutter-type: padding);
-	border-bottom: 2px solid #a0a0a0;
+	border-bottom: 2px solid $gray-6;
 
 }
 .post-header {
@@ -50,5 +67,8 @@ body {
 		}
 	}
 }
+
+
+/*******************************************************************************/
 
 @import "./blocks/*.scss";

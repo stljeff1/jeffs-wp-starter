@@ -26,30 +26,32 @@
     {% endblock nav %}
 
     {% block baseContent %}
-        <div  class="{{ container_class }}">
-            
-            <div class="grid-x {% if sidebar %} has-sidebar {% endif %}">
+        <div class="site-body">
+            <div  class="{{ container_class }}">
                 
-                <div class="cell auto main-content-cell">
-                    {% block content %}
-                        <section id="content" role="main" class="content-wrapper {{ wrapper_class }}">
-                            {% if title %}
-                                <h1>{{ title }}</h1>
-                            {% endif %}
-                            Sorry, no content
-                        </section>
-                    {% endblock %}
-                </div>
-                
-                {% if sidebar %}
-                    <div class="cell large-4 sidebar-cell">
-                        <aside class="layout-sidebar">
-                            {{ sidebar }}
-                        </aside>
+                <div class="grid-x {% if sidebar %} has-sidebar {% endif %}">
+                    
+                    <div class="cell auto main-content-cell">
+                        {% block content %}
+                            <section id="content" role="main" class="content-wrapper {{ wrapper_class }}">
+                                {% if title %}
+                                    <h1>{{ title }}</h1>
+                                {% endif %}
+                                Sorry, no content
+                            </section>
+                        {% endblock %}
                     </div>
-                {% endif %}
-            </div>
+                    
+                    {% if sidebar %}
+                        <div class="cell large-4 sidebar-cell">
+                            <aside class="layout-sidebar">
+                                {{ sidebar }}
+                            </aside>
+                        </div>
+                    {% endif %}
+                </div>
 
+            </div>
         </div>
     {% endblock %}
 

@@ -1,11 +1,21 @@
 
 <article class="post-listing-item {{ itemClass }}" data-location="{{ post.link }}">
 	<div class="post-header">
+
+		{% if post.category() %} 
+			<a href="{{ post.category().link() }}" class="category-link"><i class="far fa-folder-open"></i> /{{ post.category().name }}</a>
+		{% endif %}
 		<h3 class="post-title"><a href="{{ post.link }}">{{ post.title }}</a></h3>
 		<div class="post-meta-data">
 			<div class="post-date">{{ post.date }}</div>
-			<div class="post-category {{ post.category.slug }}">
-				{{ post.category }}
+			
+			<div class="article-tags">
+				{% set tags = post.tags() %}
+				{% if tags %} 
+					{% for tag in tags %}
+						<a href="{{ tag.link() }}" class=" button info-btn small">{{ tag.name }}</a>
+					{% endfor %}
+				{% endif %}
 			</div>
 		</div>
 	</div>

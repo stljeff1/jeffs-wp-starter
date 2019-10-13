@@ -2,15 +2,27 @@
 
 
 {% block content %}
-	{{ dump() }}
-			<article class="auithor-container" id="post-{{post.ID}}">
-				<section class="article-content">
-					<h1 class="article-h1">{{post.title}}</h1>
 
-					<div class="article-body">
-						{{post.content}}
+	<article class="author-item {{ itemClass }}" data-location="{{ post.link }}">
+		<div class="media-object">
+			<div class="media-object-section">
+				<div class="thumbnail">
+					<img alt="{{ author.name() }}" src="{{ author.avatar() }}"/>
+				</div>
+			</div>
+			<div class="media-object-section">
+				<div class="post-header">
+					<h3 class="post-title">{{ author.name() }}</a></h3>
+					<div class="post-meta-data">
+						<div class="author-url">Website: <a href="{{ author.link() }}" target="_blank">{{ author.link()  }}</a></div>
+						<div class="post-category {{ post.category.slug }}">
+							{{ post.category }}
+						</div>
 					</div>
-				</section>
-			</article>
-		
+				</div>
+			</div>
+		</div>
+		<p class="author-description">{{ author.description }}</p>
+	</article>
+
 {% endblock %}
