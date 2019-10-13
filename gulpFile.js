@@ -8,6 +8,16 @@ const sassglob = require('gulp-sass-glob');
 const postcss = require('gulp-postcss');
 const sourcemaps = require('gulp-sourcemaps');
 
+
+const webpack = require('webpack-stream');
+
+
+gulp.task('js', () => {
+	return gulp.src('src/js/main.js')
+		.pipe(webpack( require('./webpack.config.js') ))
+		.pipe(gulp.dest('./build'));
+});
+
 gulp.task('styles', () => {
 	return gulp.src('src/styles/site.scss')
 		.pipe(sassglob())
