@@ -1,6 +1,7 @@
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     mode: NODE_ENV,
@@ -34,6 +35,12 @@ module.exports = {
         ],
     },
     plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.$': 'jquery'
+        }),
+
     ],
     watch: false 
 };
