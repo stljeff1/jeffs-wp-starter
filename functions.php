@@ -21,7 +21,7 @@ if ( ! class_exists( 'Timber' ) ) {
 }
 
 define('WP_ENV', 'staging');
-define('THEME', get_stylesheet_directory());
+define('THEME_DIR', get_stylesheet_directory());
 define('THEME_URI', get_stylesheet_directory_uri());
 
 // I do not need this line, since I am not using composer
@@ -48,6 +48,7 @@ foreach($file_includes as $file) {
     require_once $filepath;
 }
 
+new JW_Site();
 
 
 
