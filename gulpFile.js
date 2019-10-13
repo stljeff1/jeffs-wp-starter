@@ -30,3 +30,14 @@ gulp.task('styles', () => {
 		.pipe(gulp.dest('./build'));
 });
 
+gulp.task('watch-styles', () => {
+	return gulp.watch(['src/styles/**/*.scss'], gulp.series('styles'));
+});
+
+gulp.task('watch-js', () => {
+	return gulp.watch(['src/js/**/*.js'], gulp.series('js'));
+});
+
+gulp.task('watch', gulp.parallel(['watch-styles', 'watch-js']))
+
+gulp.task('default', gulp.parallel(['styles', 'js', 'watch-styles', 'watch-js']))
