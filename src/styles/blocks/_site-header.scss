@@ -1,0 +1,13 @@
+.site-header {
+	background-color: #fff;
+	border-bottom: 2px solid $primary-color;
+}
+
+.site-title {
+	@extend .h1;
+	line-height: 1;
+	span {
+		display: block;
+		font-size: 60%;
+	}
+}

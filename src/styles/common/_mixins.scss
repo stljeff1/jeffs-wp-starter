@@ -1,0 +1,87 @@
+
+
+@mixin element-padding($dir: bottom) {
+	@if $dir == y {
+		margin: {
+			top: map-get($element-padding, small);
+			bottom: map-get($element-padding, small);
+		}
+		@include breakpoint(large) {
+
+			margin: {
+				top: map-get($element-padding, large);
+				bottom: map-get($element-padding, large);
+			}	
+		}
+	}
+	@if $dir == x {
+
+		margin: {
+			left: map-get($element-padding, small);
+			right: map-get($element-padding, small);
+		}
+		@include breakpoint(large) {
+
+			margin: {
+				left: map-get($element-padding, large);
+				right: map-get($element-padding, large);
+			}	
+		}
+	}
+	@if $dir == top {
+		margin: {
+			top: map-get($element-padding, small);
+		}
+		@include breakpoint(large) {
+
+			margin: {
+				top: map-get($element-padding, large);
+			}	
+		}
+	}
+	@if $dir == bottom {
+		margin: {
+			bottom: map-get($element-padding, small);
+		}
+		@include breakpoint(large) {
+
+			margin: {
+				bottom: map-get($element-padding, large);
+			}	
+		}
+	}
+	@if $dir == left {
+
+		margin: {
+			left: map-get($element-padding, small);
+		}
+		@include breakpoint(large) {
+
+			margin: {
+				left: map-get($element-padding, large);
+			}	
+		}
+	}
+	@if $dir == right {
+
+		margin: {
+			right: map-get($element-padding, small);
+		}
+		@include breakpoint(large) {
+
+			margin: {
+				right: map-get($element-padding, large);
+			}	
+		}
+	}
+}
+
+
+@mixin form-button() {
+	@include button($background: $orange, $background-hover: darken($orange, 15%), $color: $cream);
+	margin-bottom: 0;
+	
+	@include -zf-breakpoint-value(auto, $button-padding-bp-vals) {
+		padding: $-zf-bp-value;
+	}
+}

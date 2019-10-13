@@ -1,0 +1,78 @@
+$default-border-radius: 1rem;
+$default-letter-spacing: .1rem;
+
+$element-padding: (
+	small: 2rem,
+	large: 4rem
+);
+
+$red: #d80033;
+
+
+// $foundation-palette: (
+// 	primary: $gold,
+// 	secondary: $gray,	
+// 	success: #3adb76,
+// 	alert: #ffae00,
+// 	warning: #cc4b37
+// );
+
+
+$body-font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$header-font-family: 'Roboto Slab', 'Georgia', 'Times', serif;
+
+$body-background: #fefefe;
+//$body-foreground: $cream;
+
+
+//$header-color: $red;
+
+// $grid-column-gutter: (
+//   small: 30px,
+//   medium: 40px,
+//   large: 50px
+// );
+// $block-grid-column-gutter: (
+//   small: 10px,
+//   medium: 20px
+// );
+
+// $grid-margin-gutters: $grid-column-gutter;
+// $grid-padding-gutters: $grid-margin-gutters;
+// $grid-container-padding: $grid-padding-gutters;
+
+
+$hefty-gutters: (
+  small: 45px,
+  medium: 60px,
+  large: 75px
+);
+
+// $button-sizes: (
+//   tiny: 0.75rem,
+//   small: 1rem,
+//   default: 1.25rem,
+//   large: 1.5rem,
+// );
+
+// $button-padding-bp-vals: (
+// 	small: .5rem .75rem,
+// 	medium: .75rem 1rem,
+// 	large: .75rem 2rem
+// );
+
+// $button-palette: (
+// 	primary: $gold,
+// 	secondary: $gray,
+// 	success: get-color(success),
+// 	alert: $orange,
+// 	warning: $white
+// );
+
+// $button-background: $gold;
+// $button-background-hover: scale-color($button-background, $lightness: -15%);
+
+// $button-radius: $default-border-radius;
+
+// $showcase-font-size: 20px;

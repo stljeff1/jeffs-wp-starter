@@ -1,0 +1,53 @@
+		// @include xy-gutters($gutter-position: left right, $negative: true);
+		// 	@include xy-gutters($gutter-position: left right, $gutter-type: padding);
+
+@import 'foundation';
+@import "./common/site-vars";
+
+@import "./common/mixins";
+
+@import "include-foundation";
+
+body {
+	background-color: $body-background;
+}
+
+
+@for $i from 1 through 4 {
+	h#{$i}, .h#{$i} {
+		font-weight: bold;
+	}
+}
+
+.m-b {
+	@include xy-gutters($gutter-position: bottom);	
+}
+
+
+
+
+.post-listing-item {
+	@include xy-gutters($gutter-position: top bottom, $gutters: $hefty-gutters);
+	@include xy-gutters($gutter-position: bottom, $gutter-type: padding);
+	border-bottom: 2px solid #a0a0a0;
+
+}
+.post-header {
+	@extend .m-b;
+}
+.post-title {
+	margin-bottom: 0;
+	line-height: 1.2;
+}
+.post-meta-data {
+	font-size: 1.25rem;
+	color: #a0a0a0;
+	@include breakpoint(medium) {
+		display: flex;
+		> div {
+			padding-right: 15px;
+		}
+	}
+}
+
+@import "./blocks/*.scss";
