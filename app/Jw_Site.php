@@ -1,5 +1,66 @@
 <?php
 
+class MyEnqueues {
+
+	
+	const BUILD_DIR = '/build/theme/';
+	private $build_dir = self::BUILD_DIR;
+	private $build_styles = self::BUILD_DIR . 'site.css';
+	private $build_scripts = self::BUILD_DIR . 'main.js';
+
+	public function __construct() {
+
+		// SCRIPTS AND STYLES
+		// add_action( 'admin_enqueue_scripts', 'add_admin_styles' );
+		add_action('wp_enqueue_scripts', array($this, 'start'), 10);
+	}
+
+	public function start() {
+		$this->jquery();
+		$this->googleFonts();
+		$this->fontawesome();
+		$this->site();
+
+	}
+
+	function jquery() {
+
+			wp_deregister_script('jquery');
+			wp_enqueue_script('jquery', "//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js", array(), false, true);
+	}
+
+	function googleFonts() {
+		wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto+Slab:100,700');
+	}
+
+	function fontawesome() {
+		wp_enqueue_style('font-awesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css');
+	}
+
+
+	function site() {
+
+
+		$styles = (WP_ENV == 'production') ? 'site.min.css' : 'site.css';
+		$site_css_time = 'v' . filemtime(THEME_DIR . $this->build_dir . $styles);
+
+		//debug_print(array($build_dir, $styles));
+
+
+		wp_enqueue_style('site', THEME_URI . $this->build_dir . $styles, array(), $site_css_time);
+
+		wp_enqueue_script( 'site-js', THEME_URI . $this->build_scripts, array( 'jquery' ), '', true );
+
+
+
+		wp_localize_script('site-js', 'wp_ajax', array(
+			'url' => admin_url('admin-ajax.php'),
+			'nonce' => wp_create_nonce('ajax-nonce')
+		));
+
+	}
+
+}
 
 class JW_Site extends Timber\Site {
 
@@ -7,6 +68,9 @@ class JW_Site extends Timber\Site {
 
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
 		add_action( 'init', array( $this, 'register_post_types'));
+
+
+		new MyEnqueues();
 
 		$this->hooks();
 
@@ -21,9 +85,6 @@ class JW_Site extends Timber\Site {
 
 
 
-		// SCRIPTS AND STYLES
-		// add_action( 'admin_enqueue_scripts', 'add_admin_styles' );
-		add_action('wp_enqueue_scripts', array($this, 'site_scripts_and_styles'), 10);
 
 
 
@@ -102,33 +163,7 @@ class JW_Site extends Timber\Site {
 		return $twig;
 	}
 
-	public function site_scripts_and_styles() {
 
-		$build_dir = '/build/';
-		$styles = (WP_ENV == 'production') ? 'site.min.css' : 'site.css';
-		$site_css_time = 'v' . filemtime(THEME_DIR . $build_dir . $styles);
-
-		debug_print(array($build_dir, $styles));
-
-
-		wp_enqueue_style('site', THEME_URI . $build_dir . $styles, array(), $site_css_time);
-
-		wp_enqueue_script( 'site-js', get_stylesheet_directory_uri() . '/build/main.js', array( 'jquery' ), '', true );
-
-
-		if(!is_admin()) {
-			wp_deregister_script('jquery');
-			wp_enqueue_script('jquery', "//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js", array(), false, true);
-		}
-
-
-
-		wp_localize_script('site-js', 'wp_ajax', array(
-			'url' => admin_url('admin-ajax.php'),
-			'nonce' => wp_create_nonce('ajax-nonce')
-		));
-
-	}
 
 
 
