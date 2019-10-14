@@ -66,8 +66,7 @@ class JW_Site extends Timber\Site {
 
 	public function __construct() {
 
-		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
-		add_action( 'init', array( $this, 'register_post_types'));
+		add_action( 'init', array( $this, 'theme_init'));
 
 
 		new MyEnqueues();
@@ -78,18 +77,32 @@ class JW_Site extends Timber\Site {
 
 	}
 
+	function theme_init() {
+
+		$this->registerPostTypes();
+		// $this->registerTaxonomies();
+		// $this->registerMenus();
+		// $this->addUserRoles();
+		// $this->addImagesSizes();
+		// $this->addToACF();
+	}
+
 	function hooks() {
 
 		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
+		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
+
+
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
-
-
-
 
 
 
 	}
 
+	function register_post_types() {
+
+	}
+	
 	function theme_supports() {
 
 		// Add default posts and comments RSS feed links to head.
@@ -143,9 +156,6 @@ class JW_Site extends Timber\Site {
 		add_theme_support( 'menus' );
 	}
 
-	function register_post_types() {
-
-	}
 
 	function add_to_context($context) {
 

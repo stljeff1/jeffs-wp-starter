@@ -60,6 +60,7 @@ const prebuild = gulp.series('copy-fontawesome');
 
 gulp.task('watch', watchers);
 
-gulp.task('build', gulp.series( prebuild, gulp.parallel(['styles', 'js']) ));
+//gulp.task('build', gulp.series( prebuild, gulp.parallel(['styles', 'js']) ));
+gulp.task('build', gulp.parallel(['styles', 'js']) );
 
 gulp.task('default', gulp.parallel(['build', 'watch']));
