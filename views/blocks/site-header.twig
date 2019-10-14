@@ -20,7 +20,16 @@
 
 	</div>
 
+	<nav class="site-nav {{ container_class }}" id="SiteNav">
+
+			<ul class="nav-list">
+				{% for item in menu.items %}
+					<li><a href="{{ item.link }}">{{ item.title }}</a></li>
+				{% endfor %}
+			</ul>
+	</nav>
 </header>
+
 
 <div id="Panel" class="is-hidden" data-toggler="is-hidden">
 	<h2>You can't see me</h2>
