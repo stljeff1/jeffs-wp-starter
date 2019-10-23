@@ -153,7 +153,18 @@ class JW_Site extends Timber\Site {
 				'audio',
 			)
 		);
+
+
 		add_theme_support( 'menus' );
+
+		add_theme_support( 'custom-logo', array(
+			'height'      => 300,
+			'width'       => 600,
+			'flex-height' => true,
+			'flex-width'  => true,
+			'header-text' => array( 'site-title', 'site-description' ),
+		) );
+
 	}
 
 
@@ -170,7 +181,18 @@ class JW_Site extends Timber\Site {
 		// $twig->addExtension( new Twig_Extension_StringLoader() );
 		// $twig->addFilter( new Twig_SimpleFilter( 'myfoo', array( $this, 'myfoo' ) ) );
 		// $twig->addFilter( new Twig_SimpleFilter( 'my_excerpt', array( $this, 'my_post_excerpt' ) ) );
+
+		$twig-> addFunction(new Timber\Twig_Function('site_logo', array($this, 'site_logo')));
+
 		return $twig;
+	}
+
+	function site_logo() {
+		if(has_custom_logo()) {
+			$id = get_theme_mod('custom_logo');
+			$full_url = wp_get_attachment_image_src( $id , 'full' );
+			echo '<img class="site-logo" src="' . esc_url($full_url[0]) . '" alt="' . get_bloginfo('name') . '" />';
+		}
 	}
 
 
