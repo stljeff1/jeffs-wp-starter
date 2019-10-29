@@ -30,7 +30,8 @@ class MyEnqueues {
 	}
 
 	function googleFonts() {
-		wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto+Slab:100,700');
+		wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Kanit:200,400,700|Nunito&display=swap');
+		//wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Open+Sans:400,600,700|Roboto+Slab:100,700');
 	}
 
 	function fontawesome() {
