@@ -38,10 +38,31 @@ $slate3: #778899;
 // 	warning: #cc4b37
 // );
 
+$primary-color: #073C70;
 
-$body-font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-$header-font-family: 'Roboto Slab', 'Georgia', 'Times', serif;
+$header-styles: (
+  small: (
+    'h1': ('font-size': 36),
+    'h2': ('font-size': 30),
+    'h3': ('font-size': 24),
+    'h4': ('font-size': 21),
+    'h5': ('font-size': 18),
+    'h6': ('font-size': 16),
+  ),
+  medium: (
+    'h1': ('font-size': 48),
+    'h2': ('font-size': 40),
+    'h3': ('font-size': 31),
+    'h4': ('font-size': 25),
+    'h5': ('font-size': 20),
+    'h6': ('font-size': 16),
+  ),
+);
+
+$body-font-family: 'Nunito', 'Georgia', 'Times', serif;
+
+$header-font-family: 'Kanit', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 $body-background: $white;
 //$body-foreground: $cream;
@@ -72,6 +93,12 @@ $hefty-gutters: (
   medium: 60px,
   large: 75px
 );
+$small-gutters: (
+  small: 15px,
+  medium: 20px,
+  large: 25px
+);
+
 
 // $button-sizes: (
 //   tiny: 0.75rem,
