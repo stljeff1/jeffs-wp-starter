@@ -33,17 +33,6 @@
 						</div>
 					{% endif %}
 				</div>
-				<div class="cell large-3" style="margin-top: 150px;">
-					<h4>Archives</h4>
-					<ul class="list-unstyled">
-						{% for item in archives.items %}
-						    <li><a href="{{item.link}}">{{item.name}}</a></li>
-						    {% for child in item.children %}
-						        <li class="child pl-3"><a href="{{child.link}}">{{child.name}}</a></li>
-						    {% endfor %}
-						{% endfor %}
-					</ul>
-				</div>
 			</div>
 		
 	</section>

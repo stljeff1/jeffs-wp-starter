@@ -1,0 +1,48 @@
+{% extends "layouts/base.twig" %}
+
+            {% block precontent %}
+                {% block pageHeaderWrapper %}
+
+                <div class="section-title-container m-b">
+
+                    <div class="bg-image" data-type="parallax-image"></div>
+                    <div class="section-title" data-type="para'lax-content">
+                        <div class="container">
+                            <div class="text-center">
+                            	<h1 class="">{{ post.title }}</h1> 
+
+                                {% if (custom_content.sub_title) %}
+                                	<p>{{ custom_content.sub_title }}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                {% endblock %}
+            {% endblock %}
+
+            {% block contentWrapper %}
+                <div  class="{{ container_class }}">
+                
+                    <div class="grid-x {% if sidebar %} has-sidebar {% endif %}">
+                    
+                        <div class="cell auto main-content-container">
+                            {% block content %}
+                                <section id="content" role="main" class="content-wrapper {{ wrapper_class }}">
+                                    {{ post.content }}
+                                </section>
+                            {% endblock %}
+                        </div>
+                    
+                        {% if sidebar %}
+                            <div class="cell large-4 sidebar-cell">
+                                <aside class="layout-sidebar">
+                                    {{ sidebar }}
+                                </aside>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            {% endblock %}
