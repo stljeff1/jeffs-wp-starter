@@ -89,11 +89,14 @@ class JW_Site extends Timber\Site {
 
 	function hooks() {
 
-		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
+		add_action('admin_init', array($this, 'hide_editor'));
 
 
+
+		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
+		add_filter('body_class', array($this, 'body_class'));
 
 
 
@@ -172,9 +175,15 @@ class JW_Site extends Timber\Site {
 
 		$context['foo'] = 'bar';
 		$context['container_class'] = 'grid-container';
+		$context['theme_images'] = THEME_URI . '/images';
 		$context['menu'] = new Timber\Menu();
+
+		$context['custom_content'] = $this->get_custom_fields();
+
+
 		return $context;
 	}
+
 
 	function add_to_twig($twig) {
 
@@ -187,11 +196,39 @@ class JW_Site extends Timber\Site {
 		return $twig;
 	}
 
-	function site_logo() {
+	function get_custom_fields() {
+		$fields = get_fields();
+		
+		if($fields) {
+			$content_fields = array();
+			foreach ($fields as $name => $value) {
+				debug_print(array($name, $value));
+				$content_fields[$name] = $value;
+			}
+			return $content_fields;
+		}
+		else {
+			return false;
+		}
+
+	}
+
+	function body_class($classes) {
+		global $post;
+		if(is_front_page()) {
+			array_push($classes, 'front-page');
+		}
+
+		array_push($classes, $post->post_type . '-' . $post->post_name);
+
+		return $classes;
+	}
+
+	function site_logo($className) {
 		if(has_custom_logo()) {
 			$id = get_theme_mod('custom_logo');
 			$full_url = wp_get_attachment_image_src( $id , 'full' );
-			echo '<img class="site-logo" src="' . esc_url($full_url[0]) . '" alt="' . get_bloginfo('name') . '" />';
+			echo '<img class="' . $className . '" src="' . esc_url($full_url[0]) . '" alt="' . get_bloginfo('name') . '" />';
 		}
 	}
 
